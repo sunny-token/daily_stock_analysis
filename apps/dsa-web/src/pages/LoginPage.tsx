@@ -71,26 +71,60 @@ const LoginPage: React.FC = () => {
   return (
     <div 
       style={{
-        // Scoped tokens for LoginPage to ensure UI consistency without breaking the unique visual style
-        '--login-bg-main': '#030712',
-        '--login-bg-card': '#0B0E14',
-        '--login-border-card': 'rgba(255, 255, 255, 0.05)',
-        '--login-border-input': 'rgba(255, 255, 255, 0.1)',
-        '--login-border-focus': 'rgba(6, 182, 212, 0.5)',
-        '--login-error-text': '#f87171', // red-400
-        '--login-error-bg': 'rgba(239, 68, 68, 0.1)', // red-500/10
-        '--login-error-border': 'rgba(239, 68, 68, 0.2)', // red-500/20
-        '--login-text-primary': '#ffffff',
-        '--login-text-secondary': '#94a3b8', // slate-400
-        '--login-text-muted': '#64748b', // slate-500
+        '--login-bg-main': 'hsl(222 84% 5%)',
+        '--login-bg-card': 'hsl(222 34% 8%)',
+        '--login-border-card': 'hsl(0 0% 100% / 0.05)',
+        '--login-border-input': 'hsl(0 0% 100% / 0.1)',
+        '--login-border-focus': 'hsl(190 100% 50% / 0.5)',
+        '--login-error-text': 'hsl(var(--destructive))',
+        '--login-error-bg': 'hsl(var(--destructive) / 0.1)',
+        '--login-error-border': 'hsl(var(--destructive) / 0.2)',
+        '--login-text-primary': 'hsl(0 0% 100%)',
+        '--login-text-secondary': 'hsl(215 20% 65%)',
+        '--login-text-muted': 'hsl(215 16% 45%)',
+        '--login-accent-soft': 'hsl(190 100% 50% / 0.08)',
+        '--login-accent-border': 'hsl(190 100% 50% / 0.28)',
+        '--login-accent-text': 'hsl(190 100% 68%)',
+        '--login-accent-glow': 'hsl(190 100% 50% / 0.2)',
+        '--login-brand-start': 'hsl(190 100% 50%)',
+        '--login-brand-end': 'hsl(214 100% 62%)',
+        '--login-brand-button-start': 'hsl(194 96% 45%)',
+        '--login-brand-button-end': 'hsl(214 100% 56%)',
+        '--login-brand-button-start-hover': 'hsl(194 96% 50%)',
+        '--login-brand-button-end-hover': 'hsl(214 100% 62%)',
+        '--login-button-text': 'hsl(210 33% 98%)',
+        '--login-label-text': 'hsl(0 0% 100%)',
+        '--login-hint-text': 'hsl(215 20% 65%)',
+        '--login-input-surface': 'hsl(222 30% 12% / 0.92)',
+        '--login-input-border': 'hsl(0 0% 100% / 0.12)',
+        '--login-input-border-hover': 'hsl(190 100% 50% / 0.32)',
+        '--login-input-border-focus': 'hsl(190 100% 50% / 0.58)',
+        '--login-input-focus-ring': '0 0 0 4px hsl(190 100% 50% / 0.16)',
+        '--login-input-text': 'hsl(190 100% 74%)',
+        '--login-input-placeholder': 'hsl(215 18% 64%)',
+        '--login-input-caret': 'hsl(190 100% 50%)',
+        '--login-input-fill': 'hsl(190 100% 74%)',
+        '--login-input-icon': 'hsl(190 100% 68% / 0.88)',
+        '--login-input-toggle-bg': 'hsl(223 28% 14% / 0.92)',
+        '--login-input-toggle-border': 'hsl(0 0% 100% / 0.10)',
+        '--login-input-toggle-text': 'hsl(190 100% 78% / 0.82)',
+        '--login-input-toggle-border-hover': 'hsl(190 100% 50% / 0.34)',
+        '--login-input-toggle-bg-hover': 'hsl(190 100% 50% / 0.12)',
+        '--login-input-toggle-text-hover': 'hsl(190 100% 82%)',
+        '--login-input-toggle-ring': 'hsl(190 100% 50% / 0.24)',
+        '--login-input-toggle-active-bg': 'hsl(190 100% 50% / 0.18)',
+        '--login-input-toggle-active-border': 'hsl(190 100% 50% / 0.46)',
+        '--login-input-toggle-active-text': 'hsl(190 100% 88%)',
+        '--login-grid-line': 'hsl(0 0% 50% / 0.04)',
+        '--login-grid-mask': 'radial-gradient(ellipse 80% 50% at 50% 50%, #000 70%, transparent 100%)',
       } as React.CSSProperties}
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-[var(--login-bg-main)] py-12 font-sans selection:bg-cyan-500/30 sm:px-6 lg:px-8 [perspective:1500px]"
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-[var(--login-bg-main)] py-12 font-sans selection:bg-[var(--login-accent-soft)] sm:px-6 lg:px-8 [perspective:1500px]"
     >
       {/* Dynamic Background */}
       <ParticleBackground />
 
       {/* Cyber Grid */}
-      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,var(--login-grid-line)_1px,transparent_1px),linear-gradient(to_bottom,var(--login-grid-line)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:var(--login-grid-mask)]" />
 
       {/* Parallax Glowing Orbs */}
       <motion.div
@@ -98,7 +132,7 @@ const LoginPage: React.FC = () => {
           x: useTransform(smoothX, [-0.5, 0.5], [-50, 50]),
           y: useTransform(smoothY, [-0.5, 0.5], [-50, 50]),
         }}
-        className="absolute left-[20%] top-[20%] -z-10 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-600/20 blur-[100px]"
+        className="absolute left-[20%] top-[20%] -z-10 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--login-accent-glow)] blur-[100px]"
       />
       <motion.div
         style={{
@@ -122,10 +156,10 @@ const LoginPage: React.FC = () => {
               y: useTransform(smoothY, [-0.5, 0.5], [-8, 8]),
               rotate: useTransform(smoothX, [-0.5, 0.5], [-0.5, 0.5]),
             }}
-            className="absolute -top-[20vh] -z-10 opacity-80 pointer-events-none"
+            className="pointer-events-none absolute -top-[20vh] -z-10 opacity-80"
           >
-            <div className="relative flex h-[120vh] w-[120vh] items-center justify-center rounded-full border border-cyan-500/10 bg-gradient-to-br from-cyan-950/20 to-blue-950/20 shadow-[inset_0_0_200px_rgba(6,182,212,0.1)] blur-[4px]">
-              <Cpu className="h-[70vh] w-[70vh] text-cyan-900/40 brightness-50" />
+            <div className="relative flex h-[120vh] w-[120vh] items-center justify-center rounded-full border border-[var(--login-accent-soft)] bg-gradient-to-br from-[var(--login-accent-soft)] to-[hsl(214_100%_20%_/_0.18)] shadow-[inset_0_0_200px_var(--login-accent-glow)] blur-[4px]">
+              <Cpu className="h-[70vh] w-[70vh] text-[hsl(200_80%_22%_/_0.4)] brightness-50" />
               <TrendingUp className="absolute h-[25vh] w-[25vh] translate-x-[15vh] translate-y-[15vh] text-emerald-900/30 brightness-50" />
             </div>
           </motion.div>
@@ -133,7 +167,7 @@ const LoginPage: React.FC = () => {
           <div className="mt-8 flex flex-col items-center">
             <h2 className="text-4xl font-extrabold tracking-tighter text-[var(--login-text-primary)] sm:text-6xl">
               <span className="bg-gradient-to-r from-[var(--login-text-primary)] via-[var(--login-text-primary)] to-[var(--login-text-secondary)] bg-clip-text text-transparent">DAILY </span>
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent shadow-cyan-500/20 drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]">STOCK</span>
+              <span className="bg-gradient-to-r from-[var(--login-brand-start)] to-[var(--login-brand-end)] bg-clip-text text-transparent drop-shadow-[0_0_20px_var(--login-accent-glow)]">STOCK</span>
             </h2>
             <h3 className="mt-1 text-xl font-bold uppercase tracking-[0.5em] text-[var(--login-text-muted)]">
               Analysis Engine
@@ -144,7 +178,7 @@ const LoginPage: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="mt-6 flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/5 px-3 py-1 text-[10px] font-medium text-cyan-300 backdrop-blur-sm"
+            className="mt-6 flex items-center gap-2 rounded-full border border-[var(--login-accent-border)] bg-[var(--login-accent-soft)] px-3 py-1 text-[10px] font-medium text-[var(--login-accent-text)] backdrop-blur-sm"
           >
             <Network className="h-3 w-3" />
             <span>V3.X QUANTITATIVE SYSTEM</span>
@@ -158,11 +192,11 @@ const LoginPage: React.FC = () => {
           className="relative group z-20 pointer-events-auto"
         >
           {/* Card Border Glow */}
-          <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-b from-cyan-500/20 to-blue-600/20 opacity-50 blur-sm transition duration-1000 group-hover:opacity-100 group-hover:duration-200 pointer-events-none" />
+          <div className="pointer-events-none absolute -inset-0.5 rounded-3xl bg-gradient-to-b from-[var(--login-accent-glow)] to-[hsl(214_100%_56%_/_0.18)] opacity-50 blur-sm transition duration-1000 group-hover:opacity-100 group-hover:duration-200" />
 
           <div className="pointer-events-auto relative flex flex-col overflow-hidden rounded-3xl border border-[var(--login-border-card)] bg-[var(--login-bg-card)]/80 p-8 shadow-2xl backdrop-blur-xl">
             {/* Inner corner glow */}
-            <div className="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-cyan-500/10 blur-[50px]" />
+            <div className="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-[var(--login-accent-soft)] blur-[50px]" />
             <div className="absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-blue-600/10 blur-[50px]" />
 
             <div className="mb-8">
@@ -174,7 +208,7 @@ const LoginPage: React.FC = () => {
                   </>
                 ) : (
                   <>
-                    <Lock className="h-5 w-5 text-cyan-400" />
+                    <Lock className="h-5 w-5 text-[var(--login-accent-text)]" />
                     <span>管理员登录</span>
                   </>
                 )}
@@ -191,6 +225,7 @@ const LoginPage: React.FC = () => {
                 <Input
                   id="password"
                   type="password"
+                  appearance="login"
                   allowTogglePassword
                   iconType="password"
                   label={isFirstTime ? '管理员密码' : '登录密码'}
@@ -200,13 +235,13 @@ const LoginPage: React.FC = () => {
                   disabled={isSubmitting}
                   autoFocus
                   autoComplete={isFirstTime ? 'new-password' : 'current-password'}
-                  className="!bg-[var(--login-border-card)] !border-[var(--login-border-input)] focus:!border-[var(--login-border-focus)]"
                 />
 
                 {isFirstTime && (
                   <Input
                     id="passwordConfirm"
                     type="password"
+                    appearance="login"
                     allowTogglePassword
                     iconType="password"
                     label="确认密码"
@@ -215,7 +250,6 @@ const LoginPage: React.FC = () => {
                     onChange={(e) => setPasswordConfirm(e.target.value)}
                     disabled={isSubmitting}
                     autoComplete="new-password"
-                    className="!bg-[var(--login-border-card)] !border-[var(--login-border-input)] focus:!border-[var(--login-border-focus)]"
                   />
                 )}
               </div>
@@ -239,7 +273,7 @@ const LoginPage: React.FC = () => {
                 type="submit"
                 variant="primary"
                 size="lg"
-                className="relative h-12 w-full overflow-hidden rounded-xl border-0 bg-gradient-to-r from-cyan-600 to-blue-600 font-medium text-white shadow-lg shadow-cyan-950/20 hover:from-cyan-500 hover:to-blue-500 group/btn"
+                className="group/btn relative h-12 w-full overflow-hidden rounded-xl border-0 bg-gradient-to-r from-[var(--login-brand-button-start)] to-[var(--login-brand-button-end)] font-medium text-[var(--login-button-text)] shadow-lg shadow-[0_18px_36px_hsl(214_100%_8%_/_0.24)] hover:from-[var(--login-brand-button-start-hover)] hover:to-[var(--login-brand-button-end-hover)]"
                 disabled={isSubmitting}
               >
                 <div className="relative z-10 flex items-center justify-center gap-2">
@@ -252,7 +286,6 @@ const LoginPage: React.FC = () => {
                     <span>{isFirstTime ? '完成设置并登录' : '授权进入工作台'}</span>
                   )}
                 </div>
-                {/* Button shine effect */}
                 <div className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none" />
               </Button>
             </form>
